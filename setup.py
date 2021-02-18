@@ -103,8 +103,8 @@ class CustomBuild(build_ext):
                 args_for_cmake = ["-DCMAKE_POLICY_DEFAULT_CMP0012=NEW"]
 
             os.chdir(os.path.join(src_path, 'pyquest_cffi/questlib/'))
-            run_command_make = ['cmake', os.path.join(src_path, 'QuEST/QuEST/')] + args_for_cmake
-            run_command_build = ['cmake', '--build', '.']
+            run_command_make = ['arch', '-x86_64', '/usr/local/bin/cmake', os.path.join(src_path, 'QuEST/QuEST/')] + args_for_cmake
+            run_command_build = ['arch', '-x86_64','/usr/local/bin/cmake', '--build', '.']
             subprocess.run(run_command_make, check=True)
             subprocess.run(run_command_build, check=True)
             from build_quest import build_quest_so
